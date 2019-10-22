@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ImageFragmentCollectionAdapter adapter;
     ArrayList<String> fileNames;
     RecyclerView recyclerView;
+    ArrayList<Bitmap> bitmapArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         fileNames=new ArrayList<>();
+        bitmapArrayList=new ArrayList<>();
 
         String folderPath = Environment.getExternalStorageDirectory()+"/Aman";
         File file= new File(folderPath);
@@ -35,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i=0;i<files.length;i++){
             fileNames.add(files[i].getAbsolutePath());
+            bitmapArrayList.add(BitmapFactory.decodeFile(files[i].getAbsolutePath()));
         }
 
         recyclerView=findViewById(R.id.rview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
-        ImageAdapter imageAdapter=new ImageAdapter(fileNames,MainActivity.this);
+        ImageAdapter imageAdapter=new ImageAdapter(fileNames,MainActivity.this,bitmapArrayList);
         recyclerView.setAdapter(imageAdapter);
 
         /*viewPager=findViewById(R.id.pager);

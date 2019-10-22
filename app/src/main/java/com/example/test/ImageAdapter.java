@@ -19,10 +19,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     ArrayList<String> fileNames;
     Context context;
+    ArrayList<Bitmap> bitmapArrayList;
 
-    public ImageAdapter(ArrayList<String> fileNames, Context context) {
+    public ImageAdapter(ArrayList<String> fileNames, Context context, ArrayList<Bitmap> bitmapArrayList) {
         this.fileNames=fileNames;
         this.context=context;
+        this.bitmapArrayList=bitmapArrayList;
     }
 
     @NonNull
@@ -34,9 +36,9 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        Bitmap bitmap= BitmapFactory.decodeFile(fileNames.get(position));
+//        Bitmap bitmap= BitmapFactory.decodeFile(fileNames.get(position));
         Glide.with(context)
-                .load(bitmap)
+                .load(bitmapArrayList.get(position))
                 .into(holder.imageView);
     }
 
