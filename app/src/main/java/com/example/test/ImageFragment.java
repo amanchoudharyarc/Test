@@ -37,12 +37,12 @@ public class ImageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_image, container, false);
-       /* imageView=view.findViewById(R.id.image_view);
+        imageView=view.findViewById(R.id.image_view);
         String outputPath= getArguments().getString("path");
-        *//*BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        /*BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(outputPath, bmOptions);
-        bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);*//*
-        imageView.setImageBitmap(BitmapFactory.decodeFile(outputPath));*/
+        bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);*/
+        imageView.setImageBitmap(BitmapFactory.decodeFile(outputPath));
         return view;
     }
 

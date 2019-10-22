@@ -37,20 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i=0;i<files.length;i++){
             fileNames.add(files[i].getAbsolutePath());
-            bitmapArrayList.add(BitmapFactory.decodeFile(files[i].getAbsolutePath()));
+//            bitmapArrayList.add(BitmapFactory.decodeFile(files[i].getAbsolutePath()));
         }
 
-        recyclerView=findViewById(R.id.rview);
+        /*recyclerView=findViewById(R.id.rview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setHasFixedSize(true);
         ImageAdapter imageAdapter=new ImageAdapter(fileNames,MainActivity.this,bitmapArrayList);
         recyclerView.setAdapter(imageAdapter);
-
-        /*viewPager=findViewById(R.id.pager);
+*/
+        viewPager=findViewById(R.id.pagert);
 
         adapter=new ImageFragmentCollectionAdapter(getSupportFragmentManager(),122,fileNames,files.length,this);
 
-        viewPager.setAdapter(adapter);*/
+        viewPager.setAdapter(adapter);
 
 
 

@@ -6,14 +6,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-   <!--<androidx.viewpager.widget.ViewPager
+   <androidx.viewpager.widget.ViewPager
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:id="@+id/pager"/>-->
+       android:id="@+id/pagert"/>
 
-   <androidx.recyclerview.widget.RecyclerView
+   <!--<androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-      android:id="@+id/rview"/>
+      android:id="@+id/rview"/>-->
 
 </LinearLayout>
