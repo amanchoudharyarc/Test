@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,7 +18,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import java.io.File;
 import java.util.ArrayList;
 
-public class ImageFragmentCollectionAdapter extends FragmentStatePagerAdapter {
+public class ImageFragmentCollectionAdapter extends PagerAdapter {
 
     ArrayList<String> fileNames;
     int count;
@@ -26,14 +27,14 @@ public class ImageFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
 
     public ImageFragmentCollectionAdapter(@NonNull FragmentManager fm, int behavior, ArrayList<String> fileNames, int count, Context context) {
-        super(fm, behavior);
         this.count=count;
         this.fileNames=fileNames;
-//        this.context=context;
-        inflater = LayoutInflater.from(context);
+        this.context=context;
+//        inflater = LayoutInflater.from(context);
+        inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    @NonNull
+   /* @NonNull
     @Override
     public Fragment getItem(int position) {
         ImageFragment imageFragment=new ImageFragment();
@@ -41,32 +42,36 @@ public class ImageFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         bundle.putString("path",fileNames.get(position));
         imageFragment.setArguments(bundle);
         return imageFragment;
-    }
+    }*/
 
     @Override
     public int getCount() {
         return count;
     }
 
-   /* @NonNull
+    @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View imageLayout = inflater.inflate(R.layout.fragment_image, container, false);
+        View imageLayout = inflater.inflate(R.layout.pager_item, container, false);
 //        final int newposition=position;
-        final ImageView imageView = (ImageView) imageLayout
-                .findViewById(R.id.image_view);
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-                imageView.setImageBitmap(BitmapFactory.decodeFile(fileNames.get(position)));
-//            }
-//        }).start();
+        ImageView imageView = (ImageView) imageLayout
+                .findViewById(R.id.img_pager_item);
+        imageView.setImageBitmap(BitmapFactory.decodeFile(fileNames.get(position)));
+        container.addView(imageLayout);
+//        ImageView imageView1=new ImageView(context);
+//        imageView1.setImageBitmap(BitmapFactory.decodeFile(fileNames.get(position)));
+
 
         return imageLayout;
-    }*/
+    }
 
-    /*@Override
+    @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view.equals(object);
-    }*/
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        container.removeView((LinearLayout)object);
+    }
 }

@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 public class ImageFragment extends Fragment {
 
     ImageView imageView;
+    String outputPath;
 
     public ImageFragment() {
         // Required empty public constructor
@@ -38,12 +41,17 @@ public class ImageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_image, container, false);
         imageView=view.findViewById(R.id.image_view);
-        String outputPath= getArguments().getString("path");
+        outputPath= getArguments().getString("path");
         /*BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         Bitmap bitmap = BitmapFactory.decodeFile(outputPath, bmOptions);
         bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);*/
-        imageView.setImageBitmap(BitmapFactory.decodeFile(outputPath));
+
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        imageView.setImageBitmap(BitmapFactory.decodeFile(outputPath));
+    }
 }
