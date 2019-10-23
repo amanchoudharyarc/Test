@@ -29,6 +29,7 @@ public class ImageFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         super(fm, behavior);
         this.count=count;
         this.fileNames=fileNames;
+//        this.context=context;
         inflater = LayoutInflater.from(context);
     }
 
@@ -47,7 +48,7 @@ public class ImageFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         return count;
     }
 
-    @NonNull
+   /* @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View imageLayout = inflater.inflate(R.layout.fragment_image, container, false);
@@ -62,10 +63,10 @@ public class ImageFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 //        }).start();
 
         return imageLayout;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view.equals(object);
-    }
+    }*/
 }
